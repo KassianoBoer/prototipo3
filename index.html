@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Colchonetes Premium</title>
+<style>
+  /* Reset */
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #0d0a06;
+    color: #d4af37;
+    min-height: 100vh;
+  }
+  a {
+    color: #d4af37;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  header {
+    background: #1a1710;
+    padding: 15px 20px;
+    border-bottom: 3px solid #d4af37;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.7);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  nav ul li a {
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  nav ul li a.active,
+  nav ul li a:hover {
+    background: #d4af37;
+    color: #1a1710;
+  }
+
+  section {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  /* Home / Hero */
+  #home {
+    text-align: center;
+  }
+  #home .hero {
+    background: url('https://via.placeholder.com/1200x500/3b2e00/fff?text=Colchonetes+para+Espregui%C3%A7adeira') center/cover no-repeat;
+    color: #fff;
+    padding: 80px 20px;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #d4af37cc;
+  }
+  #home .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(13,10,6,0.65);
+    border-radius: 12px;
+    z-index: 0;
+  }
+  #home .hero-content {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 1;
+  }
+  #home .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    color: #d4af37;
+  }
+  #home .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #eee;
+  }
+  #home .btn-whatsapp {
+    background-color: #25d366;
+    color: #fff;
+    font-weight: 700;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 0 12px #25d366aa;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  #home .btn-whatsapp:hover {
+    background-color: #1ebe57;
+    transform: scale(1.05);
+    box-shadow: 0 0 18px #1ebe57cc;
+  }
+  /* Features on Home */
+  #home .features {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 30px;
+  }
+  #home .feature-card {
+    background: #1a1710;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #d4af37aa;
+    color: #f4e3a1;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  #home .feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px #d4af37ff;
+  }
+  #home .feature-card img {
+    max-width: 80px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 2px #d4af37);
+  }
+  #home .feature-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+    color: #d4af37;
+  }
+  #home .feature-card p {
+    font-size: 1rem;
+    color: #fffde7;
+  }
+
+  /* Produto */
+  #produto {
+    display: none;
+    color: #f4e3a1;
+  }
+  #produto .container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #produto .image-section {
+    flex: 1 1 350px;
+  }
+  #produto .image-section img {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #d4af37aa;
+  }
+  #produto .details-section {
+    flex: 1 1 400px;
+  }
+  #produto h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #d4af37;
+  }
+  #produto p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+  #produto .btn-whatsapp {
+    background-color: #25d366;
+    color: #fff;
+    font-weight: 700;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 0 12px #25d366aa;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  #produto .btn-whatsapp:hover {
+    background-color: #1ebe57;
+    transform: scale(1.05);
+    box-shadow: 0 0 18px #1ebe57cc;
+  }
+
+  /* Contato */
+  #contato {
+    display: none;
+  }
+  #contato form {
+    background: #1a1710;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 0 15px #d4af37cc;
+  }
+  #contato label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  #contato input, #contato textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+  }
+  #contato input[type="submit"] {
+    background-color: #d4af37;
+    color: #1a1710;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #contato input[type="submit"]:hover {
+    background-color: #b28d24;
+  }
+
+  footer {
+    text-align: center;
+    padding: 25px 15px;
+    border-top: 3px solid #d4af37;
+    color: #d4af37cc;
+    font-size: 0.9rem;
+    background: #1a1710;
+    margin-top: 40px;
+  }
+
+  /* Responsivo */
+  @media(max-width:800px){
+    #produto .container {
+      flex-direction: column;
+      gap: 25px;
+    }
+  }
+  @media(max-width:600px){
+    #home .hero h1 {
+      font-size: 2rem;
+    }
+    #home .btn-whatsapp,
+    #produto .btn-whatsapp {
+      padding: 12px 30px;
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Colchonetes Premium</div>
+    <ul>
+      <li><a href="#" class="nav-link active" data-target="home">Home</a></li>
+      <li><a href="#" class="nav-link" data-target="produto">Produto</a></li>
+      <li><a href="#" class="nav-link" data-target="contato">Contato</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <!-- Home -->
+  <section id="home" aria-label="Página inicial">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Conforto e Estilo à Beira da Piscina</h1>
+        <p>Transforme seu espaço com nossos colchonetes exclusivos, resistentes e fáceis de limpar.</p>
+        <a href="https://wa.me/seunumerodetelefone" target="_blank" class="btn-whatsapp" aria-label="Fale conosco no WhatsApp">Fale conosco no WhatsApp</a>
+      </div>
+    </div>
+    <div class="features" aria-label="Diferenciais dos colchonetes">
+      <article class="feature-card">
+        <img src="https://via.placeholder.com/80/d4af37/000000?text=Resistente" alt="Ícone resistente" />
+        <h3>Material Resistente</h3>
+        <p>Produzidos com tecido impermeável de alta durabilidade, ideais para uso externo.</p>
+      </article>
+      <article class="feature-card">
+        <img src="https://via.placeholder.com/80/d4af37/000000?text=Conforto" alt="Ícone conforto" />
+        <h3>Conforto Máximo</h3>
+        <p>Espuma de alta densidade que garante conforto prolongado ao relaxar.</p>
+      </article>
+      <article class="feature-card">
+        <img src="https://via.placeholder.com/80/d4af37/000000?text=Design" alt="Ícone design" />
+        <h3>Design Moderno</h3>
+        <p>Modelos elegantes que combinam com qualquer ambiente e decoração.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Produto -->
+  <section id="produto" aria-label="Detalhes do produto">
+    <div class="container">
+      <div class="image-section">
+        <img src="https://via.placeholder.com/450x350/3b2e00/fff?text=Colchonete+Premium" alt="Foto do colchonete premium" />
+      </div>
+      <div class="details-section">
+        <h2>Colchonete Premium para Espreguiçadeira</h2>
+        <p>Nosso colchonete é feito com material impermeável e espuma de alta densidade, garantindo conforto e durabilidade mesmo em ambientes externos.</p>
+        <p>Design moderno e elegante, disponível em várias cores que combinam com seu espaço de lazer.</p>
+        <a href="https://wa.me/seunumerodetelefone" target="_blank" class="btn-whatsapp" aria-label="Comprar pelo WhatsApp">Comprar pelo WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato" aria-label="Formulário de contato">
+    <form onsubmit="alert('Mensagem enviada! Obrigado pelo contato.'); return false;">
+      <label for="nome">Nome completo</label>
+      <input type="text" id="nome" name="nome" required placeholder="Seu nome" />
+      
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" required placeholder="seu@email.com" />
+      
+      <label for="mensagem">Mensagem</label>
+      <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Digite sua mensagem"></textarea>
+      
+      <input type="submit" value="Enviar mensagem" />
+    </form>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Sua Empresa - Todos os direitos reservados.
+</footer>
+
+<script>
+  const links = document.querySelectorAll('nav ul li a.nav-link');
+  const sections = document.querySelectorAll('main > section');
+
+  function showSection(id) {
+    sections.forEach(sec => {
+      if(sec.id === id) {
+        sec.style.display = 'block';
+      } else {
+        sec.style.display = 'none';
+      }
+    });
+    links.forEach(link => {
+      if(link.dataset.target === id) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = link.dataset.target;
+      showSection(target);
+      window.scrollTo({top:0, behavior: 'smooth'});
+    });
+  });
+
+  // Inicializa mostrando Home
+  showSection('home');
+</script>
+
+</body>
+</html>
